@@ -15,7 +15,7 @@ Attention à utiliser les bonnes balises HTML5.
 1. Afficher la liste des transactions bancaires du mois (donc **uniquement de juin**):
     - La date de la transaction
     - Le nom et prénom du **destinataire** si le montant est **négatif** ou le nom et prénom de l'**émetteur** si le montant est **positif** (tout en majuscule)
-    - Le numéro de compte bancaire de la personne concernée (voir point précédent) sous ce format: **"BE00 XXXX XXXX 0000"** (un espace tous les 4 chiffres et replacer du 7ième au 12ième chiffre par des "X")
+    - Le numéro de compte bancaire de la personne concernée (voir point précédent) sous ce format: **"BE00 XXXX XXXX 0000"** (un espace tous les 4 chiffres et replacer du 5ième au 12ième chiffre par des "X")
     - Le montant en gris s'il est negatif ou en **vert** s'il est positif
     - **Triée** de la plus récente à la plus ancienne (par rapport à la date de la transaction)
 
