@@ -20,26 +20,28 @@
 <body>
 <h1>Formulaire transactions</h1>
 <div class="container">
-    <form action="">
+    <form action="save.php" method="post">
         <input type="hidden" value="1" name="ID_Connect" id="ID_Connect">
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                Contacts
-            </button>
-            <div class="dropdown-menu">
+
+        <div class="form-group">
+            <label for="sel1">Contacts:</label>
+            <select class="form-control" id="sel1">
                 <?php foreach($contacts as $positionContact => $contact): ?>
-                    <a class="dropdown-item" href="#"><?= $contact['nom'].' '. $contact['prenom']  ?></a>
+                    <a class="dropdown-item" href="#" name="Contact" id="<?= $contact['id']?>"><?= $contact['nom'].' '. $contact['prenom']  ?></a>
+                    <option name="Contact" id="<?= $contact['id']?>" value="<?= $contact['id']?>"><?= $contact['nom'].' '. $contact['prenom']  ?></option>
                 <?php endforeach; ?>
-            </div>
+            </select>
         </div>
+
         <div class="form-group">
             <label for="Montant">Montant</label>
-            <input class="form-control" type="number" min="0" value="0" step=".01" id="Montant">
+            <input class="form-control" type="number" min="0" value="0" step=".01" id="Montant" name="Montant">
         </div>
         <div class="form-group">
             <label for="Date">Date</label>
-            <input class="form-control" type="date" id="myDate" id="Date">
+            <input class="form-control" type="date" id="myDate" id="Date" name="Date">
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 

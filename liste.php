@@ -34,18 +34,33 @@ $DateEnd = date('Y-m-d', strtotime("2021-06-30"));
     <tbody>
         <?php foreach($transactions as $positionTransaction => $transaction): ?>
                 <tr>
-                    <td><?= $transaction['date'];?></td>
-                    <?php foreach($contacts as $positionContact => $contact): ?>
-                        <?php if ($transaction['montant']>0 ? $transaction['emetteur']===$contact['id'] : $transaction['destinataire']===$contact['id'] ):  ?>
-                            <td><?= $transaction['montant']>0 ? strtoupper($contact['nom'].' '. $contact['prenom']) : strtolower($contact['nom'].' '. $contact['prenom'])   ?></td>
-                            <td><?= substr_replace($contact['compte'],' XXXX XXXX ',4,8)  ?> </td>
-                        <?php endif;?>
-                    <?php endforeach; ?>
-                    <td class=" <?= $transaction['montant']>0 ? 'textGreen"' : ''  ?>"><?= $transaction['montant'];?></td>
+                    <?php
+                    $interval=1;
+                    $date = explode('/', $transaction['date']);
+
+                    $origin = date("m");
+                    $target = $date[1];
+                    if ($origin==$target){
+                        $interval=0;
+                    }
+                    //echo "t".$target."i".$interval." ";
+                    ?>
+                    <?php if ($interval==0): ?>
+                        <td><?= $transaction['date'];?></td>
+
+                        <?php foreach($contacts as $positionContact => $contact): ?>
+                            <?php if ($transaction['montant']>0 ? $transaction['emetteur']===$contact['id'] : $transaction['destinataire']===$contact['id'] ):  ?>
+                                <td><?= $transaction['montant']>0 ? strtoupper($contact['nom'].' '. $contact['prenom']) : strtolower($contact['nom'].' '. $contact['prenom'])   ?></td>
+                                <td><?= substr_replace($contact['compte'],' XXXX XXXX ',4,8)  ?> </td>
+                            <?php endif;?>
+                        <?php endforeach; ?>
+                        <td class=" <?= $transaction['montant']>0 ? 'textGreen"' : ''  ?>"><?= $transaction['montant'];?>€</td>
+                    <?php endif;?>
                 </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+
 
 <a href="formulaire.php" class="btn btn-primary">Formulaire</a>
 
