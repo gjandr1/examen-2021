@@ -2,10 +2,7 @@
 
 $DateBegin = date('Y-m-d', strtotime("2021-06-01"));
 $DateEnd = date('Y-m-d', strtotime("2021-06-30"));
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,18 +37,17 @@ $DateEnd = date('Y-m-d', strtotime("2021-06-30"));
                     <td><?= $transaction['date'];?></td>
                     <?php foreach($contacts as $positionContact => $contact): ?>
                         <?php if ($transaction['montant']>0 ? $transaction['emetteur']===$contact['id'] : $transaction['destinataire']===$contact['id'] ):  ?>
-
                             <td><?= $transaction['montant']>0 ? strtoupper($contact['nom'].' '. $contact['prenom']) : strtolower($contact['nom'].' '. $contact['prenom'])   ?></td>
                             <td><?= substr_replace($contact['compte'],' XXXX XXXX ',4,8)  ?> </td>
                         <?php endif;?>
-
                     <?php endforeach; ?>
                     <td class=" <?= $transaction['montant']>0 ? 'textGreen"' : ''  ?>"><?= $transaction['montant'];?></td>
                 </tr>
         <?php endforeach; ?>
     </tbody>
-
 </table>
+
+<a href="formulaire.php" class="btn btn-primary">Formulaire</a>
 
 </body>
 </html>
